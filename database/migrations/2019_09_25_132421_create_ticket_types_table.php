@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSupportTypesTable extends Migration
+class CreateTicketTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSupportTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('support_types', function (Blueprint $table) {
+        Schema::create('ticket_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');   //financial, shippement ...
             $table->timestamps();
+            $table->string('name');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateSupportTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('support_types');
+        Schema::dropIfExists('ticket_types');
     }
 }
