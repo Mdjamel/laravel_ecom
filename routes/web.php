@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,10 @@
 
 
 
-Route::get('test-email', function () {
-    return 'Hello';
-})->middleware(['auth', 'emailverified']);
+Route::get('roles-test', function () {
+    $user = User::find(501);
+    return $user->roles;
+})->middleware(['auth', 'roleissupport']);
 
 Auth::routes();
 
