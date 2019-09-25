@@ -11,11 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\User', 500)->create();
-        factory('App\Address', 1000)->create();
-        factory('App\Product', 1500)->create();
-        factory('App\Image', 100)->create();
-        factory('App\Image', 3500)->create();
-        factory('App\Review', 3500)->create();
+        //factory('App\User', 500)->create();
+        //factory('App\Address', 1000)->create();
+        //factory('App\Product', 1500)->create();
+        //factory('App\Image', 100)->create();
+        //factory('App\Image', 3500)->create();
+        //factory('App\Review', 3500)->create();
+        //factory('App\Category', 50)->create();
     }
 }

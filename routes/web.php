@@ -13,6 +13,10 @@
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('test-email', function () {
+    return 'Hello';
+})->middleware(['auth', 'emailverified']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
