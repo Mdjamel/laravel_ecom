@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //factory('App\Category', 50)->create();
         //factory('App\Tag', 150)->create();
        // factory('App\Ticket', 150)->create();
+       factory('App\Unit', 100)->create();
         
     }
 }

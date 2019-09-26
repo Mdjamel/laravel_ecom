@@ -12,9 +12,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js')  }}"></script>
-
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -27,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -63,6 +60,47 @@
 
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('categories') }}">
+                                    {{ __('Categories') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('products') }}">
+                                    {{ __('Products') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('reviews') }}">
+                                    {{ __('Review') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('units') }}">
+                                    {{ __('Units') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('tickets') }}">
+                                    {{ __('Tickets') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('tags') }}">
+                                    {{ __('Tags') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('countries') }}">
+                                    {{ __('Countries') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('cities') }}">
+                                    {{ __('Cities') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('states') }}">
+                                    {{ __('States') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('roles') }}">
+                                    {{ __('Roles') }}
+                                </a>
+
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

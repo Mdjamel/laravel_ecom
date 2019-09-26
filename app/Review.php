@@ -11,12 +11,14 @@ class Review extends Model
     ];
 
     public function customer(){
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function product()
     {
         return $this->belongsTo('App\Product');
     }
+
+
 
 }

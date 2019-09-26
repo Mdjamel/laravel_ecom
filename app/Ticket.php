@@ -15,4 +15,13 @@ class Ticket extends Model
     public function ticketType(){
         return $this->belongsTo('App\TicketType');
     }
+
+    public function customer(){
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+
+
+    public function order(){
+        return $this->belongsTo('App\Order');
+    }
 }

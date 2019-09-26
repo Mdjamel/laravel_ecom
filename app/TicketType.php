@@ -11,7 +11,7 @@ class TicketType extends Model
     ];
 
 
-    public function tockets(){
+    public function tickets(){
         return $this->hasMany('App\Ticket');
     }
 }
