@@ -16,3 +16,29 @@
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.delete-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+}
+
+.btn-span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.btn-span span:first-child {
+    margin-right: 10px;
+    a {
+        color: #488814;
+    }
+}
+
+.btn-span span:last-child a {
+    color: #ff3f4c;
+}

@@ -127,7 +127,7 @@
 
     </div>
 
-
+    @yield('script')
 
 </body>
 

@@ -22,6 +22,11 @@ Route::get('units', 'UnitsController@index');
 Route::group(['auth', 'user_is_admin'], function () {
     //Units 
     Route::get('units', 'UnitController@index')->name('units');
+    Route::post('units', 'UnitController@store');
+    Route::delete('units', 'UnitController@delete');
+    Route::put('units', 'UnitController@update');
+
+
     Route::get('add_unit', 'UnitController@showAdd')->name('new-unit');
 
     //categories
@@ -47,14 +52,14 @@ Route::group(['auth', 'user_is_admin'], function () {
 
     //Cities
     Route::get('cities', 'CityController@index')->name('cities');
-    
+
     //State
 
     Route::get('states', 'StateController@index')->name('states');
 
     //Reviews 
 
-    Route::get('reviews','ReviewController@index')->name('reviews');
+    Route::get('reviews', 'ReviewController@index')->name('reviews');
 
     //Tickets
 
@@ -64,4 +69,3 @@ Route::group(['auth', 'user_is_admin'], function () {
 
     Route::get('roles', 'RoleController@index')->name('roles');
 });
-
