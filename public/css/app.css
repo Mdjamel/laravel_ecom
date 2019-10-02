@@ -16560,3 +16560,12 @@ readers do not read off random characters that represent icons */
   color: #ff3f4c;
 }
 
+span.product-header-title {
+  color: #ff3f4c;
+  text-decoration: underline;
+}
+
+.remove-option {
+  color: #ff3f4c;
+}
+

@@ -25,6 +25,7 @@ Route::group(['auth', 'user_is_admin'], function () {
     Route::post('units', 'UnitController@store');
     Route::delete('units', 'UnitController@delete');
     Route::put('units', 'UnitController@update');
+    Route::post('search-unit', 'unitController@search')->name('search_unit');
 
 
     Route::get('add_unit', 'UnitController@showAdd')->name('new-unit');
@@ -35,6 +36,13 @@ Route::group(['auth', 'user_is_admin'], function () {
 
     //Products
     Route::get('products', 'ProductController@index')->name('products');
+    Route::get('new-product', 'ProductController@newProduct')->name('new-product');
+    Route::get('update-product/{id?}', 'ProductController@newProduct')->name('update-product');
+
+
+    Route::put('update-product/', 'ProductController@update')->name('update-product');
+    Route::post('new-product', 'ProductController@store');
+    Route::delete('new-product/{id}', 'ProductController@delete');
 
     //Tags
 

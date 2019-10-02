@@ -4,16 +4,91 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Unit;
+use App\Category;
+
+
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $products = Product::paginate(env('PAGINATION_COUNT'));
         $currencyCode = env('CURRENCY_CODE', '$');
         return view('admin.products.products')->with(
             [
-                'products' => $products, 
+                'products' => $products,
                 'currency_code' => $currencyCode
-            ]);
+            ]
+        );
     }
+
+    public function newProduct($id = null)
+    {
+        $product = null;
+
+        $units = Unit::all();
+        $categories = Category::all();
+
+        if (!is_null($id)) {
+            $product = Product::find($id);
+        }
+
+        return view('admin.products.new-product')->with(['product' => $product, 'units' => $units, 'categories' => $categories]);
+    }
+
+    public function update(Request $request)
+    { }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'product_title' => 'required',
+            'product_description' => 'required',
+            'product_unit' => 'required',
+            'product_price' => 'required',
+            'product_discount' => 'required',
+            'product_total' => 'required',
+            'product_category' => 'required',
+
+        ]);
+
+        $product = new Product();
+
+        $product->title = $request->product_title;
+        $product->description = $request->product_description;
+        $product->unit =  intval($request->product_unit);
+        $product->price =  doubleval($request->product_price);
+        $product->total = doubleval($request->product_total);
+        $product->discount = doubleval($request->product_discount);
+        $product->category_id = intval($request->product_category);
+
+        $options = array_unique($request->options);
+
+        $optionsArray = [];
+
+        foreach ($options as $option) {
+            $actualOptions = $request->input($option);
+
+            $optionsArray[$option] = [];
+
+            foreach ($actualOptions as $key => $actualOption) {
+                array_push($optionsArray[$option], $actualOption);
+            }
+        }
+
+        // dd($optionsArray);
+        $product->options = json_encode($optionsArray);
+
+
+        $product->save();
+
+        $request->session()->flash('message', 'Product saved with success');
+
+        return redirect(route('products'));
+    }
+
+    public function delete($id)
+    { }
 }
