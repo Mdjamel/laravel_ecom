@@ -94,6 +94,12 @@
                             <a href="#" class="btn btn-outline-dark add_option"> Add Option</a>
                         </div>
 
+                        {{-- Images  --}}
+                        <div class="form-group col-md-12">
+
+                        </div>
+                        {{-- /Images  --}}
+
 
                         <div class="form-group col-md-6 offset-md-3">
 
