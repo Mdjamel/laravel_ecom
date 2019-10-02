@@ -61,6 +61,20 @@
 
 
                     {{ $units->links() }}
+                    <form action="{{ route('search_unit') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input class="form-control" type="text" id="search_unit" name="search_unit" required
+                                    placeholder="Search Unit">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="submit" class="btn btn-primary">Serach</button>
+                            </div>
+
+
+                        </div>
+                    </form>
 
                 </div>
             </div>
@@ -84,12 +98,7 @@
         </button>
     </div>
     <div class="toast-body">
-
-
         {{ Session::get('message') }}
-
-
-
     </div>
 </div>
 
