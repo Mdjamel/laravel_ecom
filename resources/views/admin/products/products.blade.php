@@ -22,7 +22,8 @@
                                 <p>Category : {{ $product->category->name }}</p>
                                 <p>Price : {{ $currency_code }} {{ $product->price }} </p>
                                 @if(count($product->images)> 0)
-                                <img src="{{ $product->images[0]->url}}" alt="" class="img-thumbnail" card-img>
+                                <img src="{{ asset($product->images[0]->url)}}   " alt="" class="img-thumbnail"
+                                    card-img>
                                 @endif
 
 
