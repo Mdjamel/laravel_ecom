@@ -16569,3 +16569,7 @@ span.product-header-title {
   color: #ff3f4c;
 }
 
+input.image-file-upload {
+  display: none;
+}
+

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Unit;
 use App\Category;
+use App\Image;
 
 
 
@@ -64,25 +65,38 @@ class ProductController extends Controller
         $product->discount = doubleval($request->product_discount);
         $product->category_id = intval($request->product_category);
 
-        $options = array_unique($request->options);
+        if (!is_null($request->options)) {
+            $options = array_unique($request->options);
+            $optionsArray = [];
 
-        $optionsArray = [];
+            foreach ($options as $option) {
+                $actualOptions = $request->input($option);
 
-        foreach ($options as $option) {
-            $actualOptions = $request->input($option);
+                $optionsArray[$option] = [];
 
-            $optionsArray[$option] = [];
+                foreach ($actualOptions as $key => $actualOption) {
+                    array_push($optionsArray[$option], $actualOption);
+                }
+            }
+            $product->options = json_encode($optionsArray);
+        }
 
-            foreach ($actualOptions as $key => $actualOption) {
-                array_push($optionsArray[$option], $actualOption);
+        $product->save();
+
+
+        if ($request->hasFile('product_images')) {
+            $images =  $request->file('product_images');
+            // dd($images);
+            foreach ($images as $image) {
+                $path = $image->store('public');
+
+                Image::create([
+                    'product_id' => intval($product->id),
+                    'url' => $path
+                ]);
             }
         }
 
-        // dd($optionsArray);
-        $product->options = json_encode($optionsArray);
-
-
-        $product->save();
 
         $request->session()->flash('message', 'Product saved with success');
 

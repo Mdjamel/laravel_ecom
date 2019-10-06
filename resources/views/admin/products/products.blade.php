@@ -6,8 +6,8 @@
 
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Products <a class="btn btn-primary" href="{{ route('new-product') }}"> <i
-                            class=" fas
+                <div class="card-header">Products (List) <a class="btn btn-primary" href="{{ route('new-product') }}">
+                        <i class=" fas
                         fa-plus"></i></a>
                 </div>
 
@@ -25,20 +25,34 @@
                                 <img src="{{ $product->images[0]->url}}" alt="" class="img-thumbnail" card-img>
                                 @endif
 
+
+                                @if (!is_null($product->options))
+                                <div class="form-group col-md-12">
+                                    @foreach ($product->jsonFormat() as $key=>$optionsvalue)
+                                    <label for="{{ $key }}"> {{ strtoupper($key) }}</label>
+                                    <select name="{{ $key }}" id="{{ $key }} " class="form-control">
+                                        @foreach ($optionsvalue as $option)
+                                        <option>{{ strtoupper( $option) }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endforeach
+                                </div>
+                                @endif
+                                {{-- 
                                 @if (! is_null($product->options))
                                 <table class="table table-border">
                                     @foreach ($product->jsonFormat() as $optionkey=>$options)
                                     @foreach ($options as $option)
                                     <tr>
                                         <td>{{ $optionkey }}</td>
-                                        <td>{{ $option }}</td>
-                                    </tr>
-                                    @endforeach
+                                <td>{{ $option }}</td>
+                                </tr>
+                                @endforeach
 
-                                    @endforeach
+                                @endforeach
                                 </table>
 
-                                @endif
+                                @endif --}}
 
 
                                 <a href="{{ route('update-product', $product->id) }}"

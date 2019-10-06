@@ -12,8 +12,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{  (is_null($product))? route('new-product') :route('update-product') }}"
-                        method="post" class="row">
+                    <form action="{{  (is_null($product))? route('new-product') :route('update-product') }} "
+                        enctype="multipart/form-data" method="post" class="row">
                         @csrf
                         @if (!is_null($product))
                         @method('PUT')
@@ -96,24 +96,34 @@
 
                         {{-- Images  --}}
                         <div class="form-group col-md-12">
+                            <div class="row">
+                                @for ($i = 0; $i < 6; $i++) <div class="col-md-4 col-sm-12 mb-4">
 
+                                    <div class="card image-card-upload">
+                                        <a href="#" class="activate-image-upload" data-fileid="image-{{ $i }}">
+                                            <div class="card-body " style="text-align:center">
+                                            </div>
+
+                                        </a>
+                                        <input name="product_images[]" type="file"
+                                            class="form-control-file image-file-upload" id="image-{{ $i }}">
+                                    </div>
+                            </div>
+                            @endfor
                         </div>
-                        {{-- /Images  --}}
-
-
-                        <div class="form-group col-md-6 offset-md-3">
-
-                            <button type="submit" class="btn btn-primary btn-block ">Save </button>
-                        </div>
-
-
-
-                    </form>
-
                 </div>
+
+                <div class=" form-group col-md-6 offset-md-3">
+                    <button type="submit" class="btn btn-primary btn-block ">Save </button>
+                </div>
+
+
+                </form>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <div class="modal " tabindex="-1" role="dialog" name="option-window" id="option-window">
@@ -165,6 +175,12 @@
         var optionNamesList = [];
         var optionsListrow='';
 
+        var activateImageUpload = $('.activate-image-upload ');
+        var imageFileUpload = $('.image-file-upload ');
+
+        
+
+
         $optionBtn.on('click', function(e){
             e.preventDefault();
             $optionWindow.modal('show');
@@ -177,6 +193,8 @@
 
 
         })
+
+   
 
         $(document).on('click', '.add_option_btn', function(){
             var $optionName = $('#option_name');
@@ -224,10 +242,40 @@
 
         
         $optionValue.val('');
-        
-
 
         })
+
+
+        function readURL(input, imageID) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                
+                reader.onload = function(e) {
+                   
+                $('#'+imageID).attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+         }
+        
+
+        activateImageUpload.on('click', function(e){
+            e.preventDefault();
+            
+            var fileUploadID = $(this).data('fileid');
+            $('#'+fileUploadID).trigger('click');
+            var imageTag = '<img id="i'+fileUploadID+'" src=""  class="card-img-top"  >';
+            $(this).append(imageTag);
+
+            $('#'+fileUploadID).on('change', function(){
+                readURL(this, 'i'+fileUploadID);
+            })
+           
+        })
+
+   
 
 })
 </script>
