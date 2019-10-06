@@ -40,7 +40,7 @@ Route::group(['auth', 'user_is_admin'], function () {
     Route::get('update-product/{id?}', 'ProductController@newProduct')->name('update-product');
 
 
-    Route::put('update-product/', 'ProductController@update')->name('update-product');
+    // Route::put('update-product/', 'ProductController@update')->name('update-product');
     Route::post('new-product', 'ProductController@store');
     Route::delete('new-product/{id}', 'ProductController@delete');
 
