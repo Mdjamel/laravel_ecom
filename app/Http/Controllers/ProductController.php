@@ -39,7 +39,9 @@ class ProductController extends Controller
     }
 
     public function update(Request $request)
-    { }
+    {
+        dd($request);
+    }
 
     public function store(Request $request)
     {

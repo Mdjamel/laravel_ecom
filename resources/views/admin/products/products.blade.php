@@ -56,7 +56,7 @@
                                 @endif --}}
 
 
-                                <a href="{{ route('update-product', $product->id) }}"
+                                <a href="{{ route('update-product-form', $product->id) }}"
                                     class="btn btn-success mt-2">Update Product</a>
                             </div>
                         </div>
