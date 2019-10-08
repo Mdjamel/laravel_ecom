@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 /*
@@ -13,6 +15,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Get Categories
+Route::get('categories', 'Api\CategoryController@index');
+Route::get('categories/{id}', 'Api\CategoryController@show');
+
+//Get Tags
+Route::get('tags', 'Api\CategoryController@index');
+
+//Get Products
+Route::get('products', 'Api\ProductController@index');
+Route::get('products/{id}', 'Api\ProductController@show');
+
+Route::group(['auth:api'], function () { });

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Product;
 use App\Unit;
-use App\Category;
 use App\Image;
+use App\Product;
+use App\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -88,9 +89,13 @@ class ProductController extends Controller
 
         if ($request->hasFile('product_images')) {
             $images =  $request->file('product_images');
-            // dd($images);
+            //  dd($images);
             foreach ($images as $image) {
-                $path = $image->store('public');
+                $path = $image->store('images');
+                /* Storage::disk('local')->put($image.);
+                $path = Storage::disk('local')->path(); */
+
+
 
                 Image::create([
                     'product_id' => intval($product->id),

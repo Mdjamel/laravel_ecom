@@ -16,9 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name','mobile','email','password',
-        'mobile_verified','email_verified',  
-        'shipping_address', 'billing_address',
+        'first_name', 'last_name', 'mobile', 'email', 'password',
+        'mobile_verified', 'email_verified',
+        'shipping_address', 'billing_address', 'api_token',
     ];
 
     /**
@@ -44,17 +44,19 @@ class User extends Authenticatable
         return $this->hasMany('App\Order');
     }
 
-    public function payments (){
+    public function payments()
+    {
         return $this->hasMany('App\Payment');
     }
 
-    public function shipments(){
+    public function shipments()
+    {
         return $this->hasMany('App\Shipment');
     }
 
     public function shippingAddress()
     {
-        return $this->hasOne('App\Address', 'id','shipping_address');
+        return $this->hasOne('App\Address', 'id', 'shipping_address');
     }
 
     public function billingAddress()
@@ -72,12 +74,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Review');
     }
 
-    public function roles(){
+    public function roles()
+    {
         return $this->belongsToMany('App\Role');
     }
 
-    public function formattedName(){
-        return $this->first_name.' '.$this->last_name;
+    public function formattedName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
-
 }
