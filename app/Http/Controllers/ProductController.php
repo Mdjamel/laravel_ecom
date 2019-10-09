@@ -40,13 +40,11 @@ class ProductController extends Controller
     }
 
     public function update(Request $request)
-    {
-        dd($request);
-    }
+    { }
 
     public function store(Request $request)
     {
-        // dd($request);
+
         $request->validate([
             'product_title' => 'required',
             'product_description' => 'required',
@@ -92,6 +90,7 @@ class ProductController extends Controller
             //  dd($images);
             foreach ($images as $image) {
                 $path = $image->store('images');
+
                 /* Storage::disk('local')->put($image.);
                 $path = Storage::disk('local')->path(); */
 
@@ -112,4 +111,11 @@ class ProductController extends Controller
 
     public function delete($id)
     { }
+
+
+    public function show()
+    {
+        $url  = Storage::url('xvnfhAHfoHMYkYOEfHeeQXhmuJvhbQoTQ4b82QTt.png');
+        return "<img src='" . $url . "'/>";
+    }
 }

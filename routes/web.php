@@ -16,8 +16,12 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/show', 'ProductController@show');
 
 Route::get('units', 'UnitsController@index');
+
+
+
 
 Route::group(['auth', 'user_is_admin'], function () {
     //Units 

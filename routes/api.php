@@ -26,4 +26,11 @@ Route::get('tags', 'Api\CategoryController@index');
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/{id}', 'Api\ProductController@show');
 
+//General Route
+
+Route::get('countries', 'Api\CountryController@index');
+Route::get('countries/{id}/states', 'Api\CountryController@showStates');
+Route::get('countries/{id}/cities', 'Api\CountryController@showCities');
+
+
 Route::group(['auth:api'], function () { });
