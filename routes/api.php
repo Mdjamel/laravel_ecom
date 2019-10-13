@@ -22,6 +22,9 @@ Route::get('categories/{id}', 'Api\CategoryController@show');
 //Get Tags
 Route::get('tags', 'Api\CategoryController@index');
 
+//Get Units
+Route::get('units', 'Api\UnitController@index');
+
 //Get Products
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/{id}', 'Api\ProductController@show');
