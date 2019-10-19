@@ -9,6 +9,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserApiResource;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
@@ -46,9 +47,11 @@ class AuthController extends Controller
             return new UserApiResource($user);
         }
 
-        return [
+        $message =  [
             'error' => true,
             'message' => 'user login attempt failed'
         ];
+
+        return response($message, 401);
     }
 }
