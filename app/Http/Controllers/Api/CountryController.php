@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CityResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\CountryResource;
 
@@ -26,6 +27,6 @@ class CountryController extends Controller
     public function showcities($id)
     {
         $country =  Country::find($id);
-        return StateResource::collection($country->cities()->paginate());
+        return CityResource::collection($country->cities()->paginate());
     }
 }
