@@ -20,7 +20,7 @@ Route::get('categories', 'Api\CategoryController@index');
 Route::get('categories/{id}', 'Api\CategoryController@show');
 
 //Get Tags
-Route::get('tags', 'Api\CategoryController@index');
+Route::get('tags', 'Api\TagController@index');
 
 //Get Units
 Route::get('units', 'Api\UnitController@index');
