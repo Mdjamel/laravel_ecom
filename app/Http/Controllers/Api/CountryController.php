@@ -20,12 +20,12 @@ class CountryController extends Controller
     public function showStates($id)
     {
         $country =  Country::find($id);
-        return StateResource::collection($country->states);
+        return StateResource::collection($country->states()->paginate());
     }
 
     public function showcities($id)
     {
         $country =  Country::find($id);
-        return StateResource::collection($country->cities);
+        return StateResource::collection($country->cities()->paginate());
     }
 }
