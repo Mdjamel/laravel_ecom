@@ -37,6 +37,7 @@ Route::group(['auth', 'user_is_admin'], function () {
     //categories
 
     Route::get('categories', 'CategoryController@index')->name('categories');
+    Route::post('categories', 'CategoryController@store');
 
     //Products
     Route::get('products', 'ProductController@index')->name('products');
