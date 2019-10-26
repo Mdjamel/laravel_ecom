@@ -21,7 +21,7 @@ class CartController extends Controller
         $finalCartItems = [];
 
         foreach ($cartItems as $cartItem) {
-            $product = Product::find($cartItem->product->id);
+            $product = Product::find(intval($cartItem->product->id));
 
             $finalCartItem = new \stdClass();
             $finalCartItem->product = new ProductResource($product);
@@ -31,7 +31,7 @@ class CartController extends Controller
         }
 
         return [
-            'cart_items' => $finalCartItem,
+            'cart_items' => $finalCartItems,
             'id' => $cart->id,
             'total' => $cart->total,
         ];
