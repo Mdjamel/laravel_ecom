@@ -25,7 +25,7 @@ class CartController extends Controller
 
             $finalCartItem = new \stdClass();
             $finalCartItem->product = new ProductResource($product);
-            $finalCartItem->qte = $cartItem->qte;
+            $finalCartItem->qte = number_format(doubleval($cartItem->qte), 2);
 
             array_push($finalCartItems, $finalCartItem);
         }
