@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'first_name', 'last_name', 'mobile', 'email', 'password',
-        'mobile_verified', 'email_verified',
+        'mobile_verified', 'email_verified', 'cart_id',
         'shipping_address', 'billing_address', 'api_token',
     ];
 
@@ -82,5 +82,10 @@ class User extends Authenticatable
     public function formattedName()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
     }
 }

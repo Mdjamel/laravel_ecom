@@ -40,4 +40,9 @@ Route::get('countries/{id}/cities', 'Api\CountryController@showCities');
 Route::post('auth/register', 'Api\AuthController@register');
 Route::post('auth/login', 'Api\AuthController@login');
 
-Route::group(['auth:api'], function () { });
+
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('carts', 'Api\CartController@store');
+    Route::get('carts', 'Api\CartController@index');
+});

@@ -2,9 +2,18 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class CartItem extends Model
+class CartItem
 {
-    //
+
+    //As Product 
+    public $product;
+
+    //As double
+    public $qte;
+
+    public function __construct(Product $product,  $qte)
+    {
+        $this->product = $product;
+        $this->qte = $qte;
+    }
 }
