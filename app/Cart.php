@@ -42,7 +42,7 @@ class Cart extends Model
         }
         $this->cart_items = json_encode($cartItems);
         $temptotal = 0;
-        foreach ($cartItems as $cartItem) {
+        foreach ((array) $cartItems as $cartItem) {
             $temptotal += $cartItem->qte * $cartItem->product->price;
         }
 
@@ -60,7 +60,7 @@ class Cart extends Model
                 $cartItems = json_decode($this->cart_items);
             }
             $temptotal = 0;
-            foreach ($cartItems as $cartItem) {
+            foreach ((array) $cartItems as $cartItem) {
                 $temptotal += $cartItem->qte * $$cartItem->product->price;
             }
 
