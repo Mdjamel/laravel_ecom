@@ -33,7 +33,8 @@ class CartController extends Controller
         return [
             'cart_items' => $finalCartItems,
             'id' => $cart->id,
-            'total' => $cart->total,
+            'total' => number_format(doubleval($cart->total), 2),
+
         ];
     }
     public function store(Request $request)
