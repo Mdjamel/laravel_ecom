@@ -61,7 +61,7 @@ class Cart extends Model
             }
             $temptotal = 0;
             foreach ((array) $cartItems as $cartItem) {
-                $temptotal += $cartItem->qte * $$cartItem->product->price;
+                $temptotal += ($cartItem->qte * $cartItem->product->price);
             }
 
             $this->total = $temptotal;
